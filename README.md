@@ -1,5 +1,5 @@
 # Nyan
-Source endpoint of [Nya CLI](https://github.com/saltyaom/nya)
+Source endpoint of [Nya CLI](https://github.com/saltyaom/nya).
 Collection of common components pattern for copy-pasting via CLI.
 
 Currently only for Next.js.
