@@ -12,9 +12,8 @@ const FormLayout: FormLayoutComponent = ({ children, title }) => {
                     alt="Icon"
                 />
                 <h2 className={style.title}>{title}</h2>
+                {children}
             </section>
-
-            {children}
         </main>
     )
 }

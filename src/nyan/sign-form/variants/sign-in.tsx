@@ -5,7 +5,8 @@ import { useForm } from 'react-hook-form'
 
 import { Button, FormLayout, Input } from '../component'
 import { Facebook, Google } from '../icon'
-import style from '../../sign-form.module.sass'
+
+import style from '../sign-form.module.sass'
 
 import type { DraftForm, FormValue } from '../types'
 

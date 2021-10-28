@@ -6,7 +6,7 @@ Currently only for Next.js.
 
 For example:
 ```bash
-nya g navbar login-form
+nya g navbar sign-form
 ```
 
 ## Meaning of the name

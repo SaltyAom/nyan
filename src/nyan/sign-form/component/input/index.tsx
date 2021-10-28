@@ -16,7 +16,7 @@ const LoginInput: LoginInputComponent = ({
 }) => {
     return (
         <label
-            className={`flex flex-col ${style.label} capitalize ${labelClassName}`}
+            className={`flex flex-col ${style.label} capitalize gap-2 ${labelClassName}`}
         >
             {placeholder}
 

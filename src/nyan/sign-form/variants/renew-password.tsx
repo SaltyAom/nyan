@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 
 import { Button, FormLayout, Input } from '../component'
-import style from '../../sign-form.module.sass'
+import style from '../sign-form.module.sass'
 
 import type { DraftForm, FormValue } from '../types'
 
