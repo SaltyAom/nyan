@@ -1,11 +1,7 @@
-import Drawer from '@nyan/drawer'
+import { SideImageHeading } from '@nyan/heading'
 
 const Landing = () => {
-    return (
-        <Drawer>
-            <h1>Hello World</h1>
-        </Drawer>
-    )
+    return <SideImageHeading />
 }
 
 export default Landing
