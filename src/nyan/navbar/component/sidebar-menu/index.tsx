@@ -1,11 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import { sidebarMenu } from '../../config'
-
 import type { SidebarMenuComponent } from './types'
-
-const { text, padding, active, className: extraClassName = '' } = sidebarMenu
 
 const SidebarMenu: SidebarMenuComponent = ({
     href,
@@ -14,13 +10,13 @@ const SidebarMenu: SidebarMenuComponent = ({
     close
 }) => {
     const { asPath } = useRouter()
+    const isActive = asPath === href
+    const activeClassName = isActive ? 'bg-gray-100' : ''
 
     return (
         <Link href={href}>
             <a
-                className={`flex items-center ${text} ${padding} ${
-                    asPath === href ? active : ''
-                } ${extraClassName} ${className}`}
+                className={`flex items-center text-lg text-gray-600 p-3 hover:bg-gray-100 focus:bg-gray-100 rounded ${activeClassName} ${className}`}
                 role="link"
                 tabIndex={0}
                 onClick={close}

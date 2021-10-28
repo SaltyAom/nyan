@@ -1,8 +1,4 @@
-import { hamburgerMenu } from '../../config'
-
 import type { HamburgerMenuComponent } from './types'
-
-const { color, size } = hamburgerMenu
 
 const HamburgerMenu: HamburgerMenuComponent = ({
     className = '',
@@ -12,7 +8,7 @@ const HamburgerMenu: HamburgerMenuComponent = ({
 }) => {
     return (
         <button
-            className={`flex ${size} ${color} ${className} transition-colors`}
+            className={`flex text-gray-700 p-2.5 mr-2 hover:bg-gray-200 focus:bg-gray-200 rounded-full transition-colors ${className}`}
             type="button"
             onClick={toggle}
             {...props}

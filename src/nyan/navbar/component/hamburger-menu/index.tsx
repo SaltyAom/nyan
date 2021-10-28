@@ -1,11 +1,5 @@
 import { useState } from 'react'
-
-import { hamburgerMenu, mobileNavigation } from '../../config'
-
 import type { HamburgerMenuComponent } from './types'
-
-const { display, color, size, margin } = hamburgerMenu
-const { bg, size: sheetSize, padding, gap } = mobileNavigation
 
 const HamburgerMenu: HamburgerMenuComponent = ({
     className = '',
@@ -27,16 +21,15 @@ const HamburgerMenu: HamburgerMenuComponent = ({
     return (
         <>
             <button
-                className={`${display} ${color} ${margin} ${className}`}
+                className={`flex sm:hidden text-gray-700 p-2 mr-2 ${className}`}
                 type="button"
                 onClick={open}
                 {...props}
             >
                 <svg
-                    className={size}
                     xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
+                    width="21"
+                    height="21"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -59,15 +52,13 @@ const HamburgerMenu: HamburgerMenuComponent = ({
                         onKeyDown={close}
                         aria-label="Close menu"
                     />
-                    <aside
-                        className={`fixed z-50 top-0 left-0 flex flex-col justify-between ${padding} ${bg} ${gap} ${sheetSize}`}
-                    >
+                    <aside className="fixed z-50 top-0 left-0 flex flex-col justify-between gap-2 max-w-[260px] w-full h-full px-3 pb-3 bg-white">
                         {header && header(close)}
-                        <section className={`flex flex-col flex-1 ${gap}`}>
+                        <section className="flex flex-col flex-1 gap-2">
                             {menus(close)}
                         </section>
                         {footer && (
-                            <section className={`flex flex-col ${gap}`}>
+                            <section className="flex flex-col gap-2">
                                 {footer(close)}
                             </section>
                         )}

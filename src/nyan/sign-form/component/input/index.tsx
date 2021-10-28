@@ -2,11 +2,9 @@
 // @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-associated-control.md
 
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { input } from '../../config'
+import style from '../../sign-form.module.sass'
 
 import type { LoginInputComponent } from './types'
-
-const { label, border, sizing, inputClassName, inputText } = input
 
 const LoginInput: LoginInputComponent = ({
     type = 'text',
@@ -17,16 +15,14 @@ const LoginInput: LoginInputComponent = ({
     ...props
 }) => {
     return (
-        <label className="flex flex-col">
-            <span className={`${label} ${labelClassName} capitalize`}>
-                {placeholder}
-            </span>
+        <label
+            className={`flex flex-col ${style.label} capitalize ${labelClassName}`}
+        >
+            {placeholder}
 
-            <section
-                className={`flex flex-row w-full ${sizing} ${border} ${inputClassName}`}
-            >
+            <section className="flex flex-row w-full px-4 py-2 b-0 rounded bg-gray-100">
                 <input
-                    className={`${inputText} w-full bg-transparent focus:outline-none focus:ring-transparent p-0 border-0`}
+                    className="text-gray-700 text-lg placeholder-gray-400 w-full bg-transparent focus:outline-none focus:ring-transparent p-0 border-0"
                     type={type}
                     placeholder={placeholder}
                     required={required}

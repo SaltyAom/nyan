@@ -1,54 +1,74 @@
 import { useReducer } from 'react'
-import type { FunctionComponent } from 'react'
-
-import { drawer, navbar } from './config'
 
 import { Tab, HamburgerMenu } from './components'
 
-const sidebars = [
-    ['/', '▲', 'Dashboard'],
-    ['/?2', '▲', 'Team'],
-    ['/?3', '▲', 'Project'],
-    ['/?4', '▲', 'Calendar'],
-    ['/?5', '▲', 'Settings']
-] as const
+import type { DrawerComponent } from './types'
 
-const { gap, utilities, active, notActive, overlay } = drawer
-const { sizing, bg } = navbar
-
-const Drawer: FunctionComponent = ({ children }) => {
+/**
+ * @example
+ * ```tsx
+ * <Drawer
+ *     items={[
+ *         ['/', 'Dashboard', '▲'],
+ *         ['/?2', 'Team', '▲'],
+ *         ['/?3', 'Project', '▲'],
+ *         ['/?4', 'Calendar', '▲'],
+ *         ['/?5', 'Settings', '▲']
+ *     ]}
+ * >
+ *     <h1>Hello World</h1>
+ * </Drawer>
+ * ```
+ */
+const Drawer: DrawerComponent = ({
+    children,
+    items,
+    title = 'Nyan Dashboard',
+    nav = <h1 className="text-xl text-gray-700">Nyan Dashboard</h1>,
+    itemsClassName = '',
+}) => {
     const [isOpen, toggle] = useReducer((v) => !v, false)
+
+    const activeClassName = isOpen
+        ? 'absolute z-20 md:relative w-[240px]'
+        : 'absolute z-10 md:hidden w-full h-screen bg-[rgba(0,0,0,.2)]'
 
     return (
         <section className="flex w-full min-h-screen">
             {isOpen && (
                 <div
+                    className="absolute z-10 md:hidden w-full h-screen bg-[rgba(0,0,0,.2)]"
                     role="button"
                     tabIndex={0}
-                    className={overlay}
                     onClick={toggle}
                     onKeyDown={toggle}
                     aria-label="Close drawer"
                 />
             )}
+
             <aside
-                className={`top-0 left-0 flex flex-col justify-between h-screen ${utilities} ${
-                    isOpen ? active : notActive
-                } overflow-x-hidden transition-all`}
+                className={`top-0 left-0 flex flex-col justify-between h-screen p-2 bg-white border-r border-gray-200 ${activeClassName} overflow-x-hidden transition-all`}
             >
                 <section className="flex flex-col">
                     <header className="flex flex-row items-center px-1.5 py-3 border-b overflow-hidden whitespace-nowrap">
-                        <h1 className="text-xl">Nyan Dashboard</h1>
+                        <h1 className="text-xl">{title}</h1>
                     </header>
-                    <section className={`flex flex-col w-full py-2 ${gap}`}>
-                        {sidebars.map(([href, icon, title]) => (
-                            <Tab href={href} key={href}>
-                                <div className="text-xl mr-2">{icon}</div>
-                                {title}
+                    <section className="flex flex-col w-full py-2 gap-1">
+                        {items.map(([href, content, icon]) => (
+                            <Tab
+                                className={itemsClassName}
+                                href={href}
+                                key={href}
+                            >
+                                {icon && (
+                                    <div className="text-xl mr-2">{icon}</div>
+                                )}
+                                {content}
                             </Tab>
                         ))}
                     </section>
                 </section>
+
                 <footer className="flex flex-col w-full">
                     <Tab activeClassName="bg-gray-200" href="/?">
                         <img
@@ -60,12 +80,11 @@ const Drawer: FunctionComponent = ({ children }) => {
                     </Tab>
                 </footer>
             </aside>
+
             <main className="flex flex-col flex-1">
-                <nav
-                    className={`sticky top-0 flex flex-row items-center ${sizing} ${bg}`}
-                >
+                <nav className="sticky top-0 flex flex-row items-center w-full px-2 py-2 border-b border-gray-300">
                     <HamburgerMenu isOpen={isOpen} toggle={toggle} />
-                    <h1 className="text-xl text-gray-700">Nyan Dashboard</h1>
+                    {nav}
                 </nav>
                 {children}
             </main>

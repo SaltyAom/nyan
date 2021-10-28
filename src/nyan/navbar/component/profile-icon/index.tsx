@@ -1,8 +1,6 @@
-import { profileIcon } from '../../config'
-
 import type { ProfileIconComponent } from './types'
 
-const { size, fallbackColor } = profileIcon
+const size = 'w-[48px] h-[48px]'
 
 const ProfileIcon: ProfileIconComponent = ({
     src,
@@ -11,7 +9,7 @@ const ProfileIcon: ProfileIconComponent = ({
 }) => {
     return (
         <button
-            className={`h-full ${size} ${fallbackColor} rounded-full overflow-hidden ${className}`}
+            className={`${size} bg-gray-100 rounded-full overflow-hidden ${className}`}
             type="button"
             {...props}
         >

@@ -1,16 +1,12 @@
 import Link from 'next/link'
 
-import { buttonLink } from '../../config'
-
 import type { ButtonLinkComponent } from './types'
-
-const { text, bg, padding } = buttonLink
 
 const Tab: ButtonLinkComponent = ({ children, href, className = '' }) => {
     return (
         <Link href={href}>
             <a
-                className={`flex items-center ${text} ${bg} ${padding} cursor-pointer rounded ${className}`}
+                className={`flex items-center text-lg font-medium text-gray-700 bg-gray-100 px-4 py-2 cursor-pointer rounded ${className}`}
             >
                 {children}
             </a>
