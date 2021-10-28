@@ -1,11 +1,7 @@
-import Navbar from '@nyan/navbar'
+import { RenewPassword } from '@nyan/login-form'
 
 const Landing = () => {
-    return (
-        <main className="flex flex-col w-full gap-6">
-            <Navbar />
-        </main>
-    )
+    return <RenewPassword />
 }
 
 export default Landing
