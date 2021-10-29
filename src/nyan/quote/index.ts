@@ -1,0 +1,1 @@
+export { CenterQuote, ImageQuote } from './variants'

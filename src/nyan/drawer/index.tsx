@@ -1,32 +1,25 @@
 import { useReducer } from 'react'
+import type { FunctionComponent } from 'react'
 
 import { Tab, HamburgerMenu } from './components'
 
-import type { DrawerComponent } from './types'
+const items = [
+    ['/', 'Dashboard', '▲'],
+    ['/?2', 'Team', '▲'],
+    ['/?3', 'Project', '▲'],
+    ['/?4', 'Calendar', '▲'],
+    ['/?5', 'Settings', '▲']
+]
 
 /**
  * @example
  * ```tsx
- * <Drawer
- *     items={[
- *         ['/', 'Dashboard', '▲'],
- *         ['/?2', 'Team', '▲'],
- *         ['/?3', 'Project', '▲'],
- *         ['/?4', 'Calendar', '▲'],
- *         ['/?5', 'Settings', '▲']
- *     ]}
- * >
+ * <Drawer>
  *     <h1>Hello World</h1>
  * </Drawer>
  * ```
  */
-const Drawer: DrawerComponent = ({
-    children,
-    items,
-    title = 'Nyan Dashboard',
-    nav = <h1 className="text-xl text-gray-700">Nyan Dashboard</h1>,
-    itemsClassName = '',
-}) => {
+const Drawer: FunctionComponent = ({ children }) => {
     const [isOpen, toggle] = useReducer((v) => !v, false)
 
     const activeClassName = isOpen
@@ -51,15 +44,11 @@ const Drawer: DrawerComponent = ({
             >
                 <section className="flex flex-col">
                     <header className="flex flex-row items-center px-1.5 py-3 border-b overflow-hidden whitespace-nowrap">
-                        <h1 className="text-xl">{title}</h1>
+                        <h1 className="text-xl">Nyan Dashboard</h1>
                     </header>
                     <section className="flex flex-col w-full py-2 gap-1">
                         {items.map(([href, content, icon]) => (
-                            <Tab
-                                className={itemsClassName}
-                                href={href}
-                                key={href}
-                            >
+                            <Tab href={href} key={href}>
                                 {icon && (
                                     <div className="text-xl mr-2">{icon}</div>
                                 )}
@@ -84,7 +73,7 @@ const Drawer: DrawerComponent = ({
             <main className="flex flex-col flex-1">
                 <nav className="sticky top-0 flex flex-row items-center w-full px-2 py-2 border-b border-gray-300">
                     <HamburgerMenu isOpen={isOpen} toggle={toggle} />
-                    {nav}
+                    <h1 className="text-xl text-gray-700">Nyan Dashboard</h1>
                 </nav>
                 {children}
             </main>

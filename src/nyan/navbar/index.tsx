@@ -8,26 +8,23 @@ import {
     SidebarMenu
 } from './component'
 
-import type { NavbarComponent } from './types'
+const Tab = UnderlineTab
+// const Tab = HoverTab
+
+const tabs = [
+    ['/?1', 'Content 1'],
+    ['/?2', 'Content 2'],
+    ['/?3', 'Content 3'],
+    ['/?4', 'Content 4']
+] as const
 
 /**
  * @example
- * ```tsx
- * <Navbar
- *     tabs={[
- *         ['/?1', 'Content 1'],
- *         ['/?2', 'Content 2'],
- *         ['/?3', 'Content 3'],
- *         ['/?4', 'Content 4']
- *     ]}
- * />
- * 
+ * ```typescript
+ * <Navbar />
  * ```
  */
-const Navbar: NavbarComponent = ({
-    tab: Tab = UnderlineTab,
-    tabs
-}) => {
+const Navbar = () => {
     return (
         <nav className="sticky top-0 z-20 flex justify-between items-center h-[56px] w-full px-4 bg-white border-b border-gray-300">
             <header className="flex items-center h-full">
@@ -81,7 +78,5 @@ const Navbar: NavbarComponent = ({
         </nav>
     )
 }
-
-export { HoverTab, UnderlineTab } from './component'
 
 export default Navbar
