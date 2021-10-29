@@ -11,7 +11,7 @@ const CenterQuote: QuoteComponent = ({
         author: '',
         container: '',
         width: 'max-w-[640px]',
-        padding: 'my-16 px-4 py-16',
+        padding: 'my-8 px-4 py-8',
     },
     children
 }) => {

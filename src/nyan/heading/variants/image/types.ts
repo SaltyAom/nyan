@@ -1,13 +1,17 @@
 import type { FunctionComponent } from 'react'
 
-import type { HeadingProps } from '../../types'
+import type { HeadingClassName, HeadingProps } from '../../types'
 
-export interface ImageHeadingProps extends Omit<HeadingProps, 'sectionClassName' | 'sectionWidth'> {
+export interface ImageHeadingClassName extends Omit<HeadingClassName, 'section'> {
+    image?: string
+    overlay?: string
+}
+
+export interface ImageHeadingProps extends Omit<HeadingProps, 'sectionWidth' | 'className'> {
     src: string
     alt: string
-    imageClassName?: string
     imageWidth?: string
-    overlayClassName?: string
+    className?: ImageHeadingClassName
 }
 
 export type ImageHeadingComponent = FunctionComponent<ImageHeadingProps>

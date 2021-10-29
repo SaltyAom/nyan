@@ -5,19 +5,12 @@ import {
     ImageHeading,
     ListHeading
 } from '@nyan/heading'
-import Navbar, { HoverTab } from '@nyan/navbar'
+import Navbar from '@nyan/navbar'
 
 const Landing = () => {
     return (
         <>
             <Navbar
-                tab={HoverTab}
-                tabs={[
-                    ['/?1', 'Content 2'],
-                    ['/?2', 'Content 2'],
-                    ['/?3', 'Content 3'],
-                    ['/?4', 'Content 4']
-                ]}
             />
 
             <ImageHeading

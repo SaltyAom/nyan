@@ -1,1 +1,1 @@
-export { CenterQuote, ImageQuote } from './variants'
+export { CenterQuote, ImageQuote, Quote } from './variants'

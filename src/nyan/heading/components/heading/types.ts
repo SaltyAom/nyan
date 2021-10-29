@@ -2,15 +2,18 @@ import type { FunctionComponent } from 'react'
 
 import type { HeadingProps } from '../../types'
 
-export type BaseHeadingProps = Pick<
+export interface BaseHeadingProps extends Pick<
     HeadingProps,
     | 'title'
-    | 'titleClassName'
     | 'content'
-    | 'contentClassName'
     | 'notify'
-    | 'notifyClassName'
-    | 'className'
->
+> {
+    className: {
+        heading?: string
+        title?: string
+        content?: string
+        notify?: string
+    }
+}
 
 export type BaseHeadingComponent = FunctionComponent<BaseHeadingProps>

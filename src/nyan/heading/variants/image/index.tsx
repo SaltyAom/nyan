@@ -14,23 +14,38 @@ import type { ImageHeadingComponent } from './types'
  * ```
  */
 const ImageHeading: ImageHeadingComponent = ({
-    className = '',
     width = 'max-w-[720px]',
     padding = 'mt-8 px-4 pt-12 md:pt-16 gap-4',
     src = '',
     alt = '',
-    imageClassName = 'mt-8 mb-12 shadow-xl rounded md:rounded-lg',
     imageWidth = 'max-w-[840px]',
-    overlayClassName = 'bg-gray-50',
-    headingClassName = 'gap-4 text-center',
     sectionDir = '',
+    className = {
+        container: '',
+        notify: '',
+        title: '',
+        content: '',
+        heading: 'gap-4 text-center',
+        image: 'mt-8 mb-12 shadow-xl rounded md:rounded-lg',
+        overlay: 'bg-gray-50'
+    },
     ...heading
 }) => {
+    const {
+        container: containerClassName,
+        heading: headingClassName,
+        overlay: overlayClassName,
+        image: imageClassName,
+    } = className
+
     return (
         <>
-            <div className={`relative w-full ${className}`}>
+            <div className={`relative w-full ${containerClassName}`}>
                 <Heading
-                    className={`relative flex flex-col items-center w-full ${width} mx-auto ${padding} ${headingClassName}`}
+                    className={{
+                        ...className,
+                        heading: `relative flex flex-col items-center w-full ${width} mx-auto ${padding} ${headingClassName}`
+                    }}
                     {...heading}
                 />
                 <div

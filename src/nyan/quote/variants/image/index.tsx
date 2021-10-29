@@ -2,6 +2,16 @@ import style from '../../quote.module.sass'
 
 import type { ImageQuoteComponent } from './types'
 
+/**
+ * @example
+ * ```
+ * <ImageQuote
+ *     quote="The witches can't be loved. So bravely I fought. They fell and failed. My Lady doesn't wilt"
+ *     author="Ga1ahad and Scientific Witchery"
+ *     src="https://lwi.nexon.com/m_ba/brand/media/img_03_l.png"
+ * />
+ * ```
+ */
 const ImageQuote: ImageQuoteComponent = ({
     header = null,
     quote,
@@ -10,7 +20,7 @@ const ImageQuote: ImageQuoteComponent = ({
     className = {
         quote: '!text-white',
         author: '!text-gray-200',
-        container: 'my-6 px-4',
+        container: 'my-8 px-4',
         width: 'max-w-[960px]',
         padding: 'p-20',
         overlay: 'bg-[rgba(0,47,97,.75)]',

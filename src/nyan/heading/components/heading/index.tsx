@@ -4,15 +4,24 @@ import type { BaseHeadingComponent } from './types'
 
 const Heading: BaseHeadingComponent = ({
     title,
-    titleClassName = '',
     content,
-    contentClassName = '',
     notify = '',
-    notifyClassName = '',
-    className
+    className = {
+        title: '',
+        content: '',
+        notify: '',
+        section: ''
+    }
 }) => {
+    const {
+        title: titleClassName,
+        content: contentClassName,
+        notify: notifyClassName,
+        heading: headingClassName
+    } = className
+
     return (
-        <section className={`flex flex-col ${className}`}>
+        <section className={`flex flex-col ${headingClassName}`}>
             <section className="flex flex-col gap-2">
                 {notify && (
                     <h6 className={`${style.notify} ${notifyClassName}`}>

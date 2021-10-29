@@ -1,11 +1,15 @@
 import type { FunctionComponent } from 'react'
 
-import type { HeadingProps } from '../../types'
+import type { HeadingClassName, HeadingProps } from '../../types'
 
-export interface ListHeadingProps extends HeadingProps {
+export interface ListHeadingClassName extends HeadingClassName {
+    list?: string
+    listContainer?: string
+}
+
+export interface ListHeadingProps extends Omit<HeadingProps, 'className'> {
     list: string[]
-    listClassName?: string
-    listContainerClassName?: string
+    className?: ListHeadingClassName
 }
 
 export type ListHeadingComponent = FunctionComponent<ListHeadingProps>

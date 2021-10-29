@@ -20,27 +20,41 @@ import type { ListHeadingComponent } from './types'
  * ```
  */
 const ListHeading: ListHeadingComponent = ({
-    className = '',
     width = 'max-w-[640px]',
     padding = 'my-16 px-4 py-8 md:py-16 gap-8',
     list = [],
-    listClassName = 'text-gray-600',
-    listContainerClassName = 'gap-3 pl-6',
-    sectionClassName = 'gap-4',
     sectionWidth = 'max-w-[420px]',
-    headingClassName = 'gap-6',
     sectionDir = 'flex-col md:flex-row',
     children,
+    className = {
+        container: '',
+        notify: '',
+        title: '',
+        content: '',
+        section: 'gap-4',
+        heading: 'gap-6',
+        list: 'text-gray-600',
+        listContainer: 'gap-3 pl-6'
+    },
     ...heading
 }) => {
+    const {
+        list: listClassName,
+        listContainer: listContainerClassName,
+        section: sectionClassName
+    } = className
+
     return (
         <header
             className={`flex flex-col items-start w-full ${width} mx-auto ${padding} ${className}`}
         >
-            <Heading className={headingClassName} {...heading} />
+            <Heading className={className} {...heading} />
             <ul className={`flex flex-col pl-0 ${listContainerClassName}`}>
                 {list.map((detail) => (
-                    <li key={detail} className={`${style['list-item']} ${listClassName}`}>
+                    <li
+                        key={detail}
+                        className={`${style['list-item']} ${listClassName}`}
+                    >
                         detail
                     </li>
                 ))}

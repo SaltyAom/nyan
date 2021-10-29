@@ -19,23 +19,34 @@ import type { SideImageHeadingComponent } from './types'
  */
 const SideImageHeading: SideImageHeadingComponent = ({
     padding = 'mx-auto px-6 py-16 gap-6',
-    className = '',
     width = 'max-w-[1080px]',
     height = 'min-h-screen',
-    sectionClassName = 'gap-4 mx-auto sm:mx-0',
     sectionWidth = 'max-w-[320px] sm:max-w-[420px]',
     children,
     src,
     alt,
     flex = ['flex-1', 'flex-1'],
-    imageClassName = '',
     imageWidth = 'max-w-[560px]',
-    headingClassName = 'gap-4',
-    contentSideClassName = 'gap-4',
     flip = false,
     sectionDir = '',
+    className = {
+        container: '',
+        notify: '',
+        title: '',
+        content: '',
+        section: 'gap-4 mx-auto sm:mx-0',
+        heading: 'gap-4',
+        image: '',
+        contentSide: 'gap-6'
+    },
     ...heading
 }) => {
+    const {
+        section: sectionClassName,
+        image: imageClassName,
+        contentSide: contentSideClassName
+    } = className
+
     return (
         <header
             className={`flex flex-col-reverse ${
@@ -45,7 +56,7 @@ const SideImageHeading: SideImageHeadingComponent = ({
             <section
                 className={`flex flex-col ${flex[0]} ${contentSideClassName}`}
             >
-                <Heading className={headingClassName} {...heading} />
+                <Heading className={className} {...heading} />
                 <section
                     className={`flex flex-col sm:flex-row ${sectionWidth} w-full ${sectionClassName}`}
                 >
