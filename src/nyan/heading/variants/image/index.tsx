@@ -22,39 +22,37 @@ const ImageHeading: ImageHeadingComponent = ({
     sectionDir = '',
     className = {
         container: '',
-        notify: '',
-        title: '',
-        content: '',
         heading: 'gap-4 text-center',
         image: 'mt-8 mb-12 shadow-xl rounded md:rounded-lg',
-        overlay: 'bg-gray-50'
+        overlay: 'bg-gray-50',
     },
-    ...heading
+    ...headingProps
 }) => {
     const {
-        container: containerClassName,
-        heading: headingClassName,
-        overlay: overlayClassName,
-        image: imageClassName,
+        container = '',
+        heading = 'gap-4 text-center',
+        image = 'mt-8 mb-12 shadow-xl rounded md:rounded-lg',
+        overlay = 'bg-gray-50',
+        ...restClassName
     } = className
 
     return (
         <>
-            <div className={`relative w-full ${containerClassName}`}>
+            <div className={`relative w-full ${container}`}>
                 <Heading
                     className={{
-                        ...className,
-                        heading: `relative flex flex-col items-center w-full ${width} mx-auto ${padding} ${headingClassName}`
+                        ...restClassName,
+                        heading: `relative flex flex-col items-center w-full ${width} mx-auto ${padding} ${heading}`
                     }}
-                    {...heading}
+                    {...headingProps}
                 />
                 <div
-                    className={`absolute -bottom-20  z-[-1] w-full h-screen ${overlayClassName}`}
+                    className={`absolute -bottom-20  z-[-1] w-full h-screen ${overlay}`}
                 />
             </div>
             <div className="px-4">
                 <div
-                    className={`flex ${sectionDir} w-full ${imageWidth} mx-auto bg-gray-50 overflow-hidden ${imageClassName}`}
+                    className={`flex ${sectionDir} w-full ${imageWidth} mx-auto bg-gray-50 overflow-hidden ${image}`}
                 >
                     <img className="w-full" src={src} alt={alt} />
                 </div>

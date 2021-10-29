@@ -8,7 +8,7 @@ export interface BaseHeadingProps extends Pick<
     | 'content'
     | 'notify'
 > {
-    className: {
+    className?: {
         heading?: string
         title?: string
         content?: string

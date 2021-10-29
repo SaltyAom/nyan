@@ -23,27 +23,24 @@ const CenterHeading: HeadingComponent = ({
     children,
     sectionDir = 'flex-col md:flex-row',
     className = {
-        container: '',
-        notify: '',
-        title: '',
-        content: '',
         section: 'gap-4 my-4',
         heading: 'gap-6 text-center'
     },
     ...heading
 }) => {
     const {
-        container: containerClassName,
-        section: sectionClassName,
+        container = '',
+        section = 'gap-4 my-4',
+        ...restClassName
     } = className
 
     return (
         <header
-            className={`flex flex-col items-center w-full ${width} mx-auto ${padding} ${containerClassName}`}
+            className={`flex flex-col items-center w-full ${width} mx-auto ${padding} ${container}`}
         >
-            <Heading className={className} {...heading} />
+            <Heading className={{ ...className, ...restClassName }} {...heading} />
             <section
-                className={`flex ${sectionDir} ${sectionWidth} w-full ${sectionClassName}`}
+                className={`flex ${sectionDir} ${sectionWidth} w-full ${section}`}
             >
                 {children}
             </section>

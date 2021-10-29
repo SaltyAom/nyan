@@ -27,40 +27,41 @@ const ListHeading: ListHeadingComponent = ({
     sectionDir = 'flex-col md:flex-row',
     children,
     className = {
-        container: '',
-        notify: '',
-        title: '',
-        content: '',
         section: 'gap-4',
         heading: 'gap-6',
         list: 'text-gray-600',
         listContainer: 'gap-3 pl-6'
     },
-    ...heading
+    ...headingProps
 }) => {
     const {
-        list: listClassName,
-        listContainer: listContainerClassName,
-        section: sectionClassName
+        section = 'gap-4',
+        list: listStyle = 'text-gray-600',
+        listContainer = 'gap-3 pl-6',
+        heading = 'gap-6',
+        ...restClassName
     } = className
 
     return (
         <header
             className={`flex flex-col items-start w-full ${width} mx-auto ${padding} ${className}`}
         >
-            <Heading className={className} {...heading} />
-            <ul className={`flex flex-col pl-0 ${listContainerClassName}`}>
+            <Heading
+                className={{ ...restClassName, heading }}
+                {...headingProps}
+            />
+            <ul className={`flex flex-col pl-0 ${listContainer}`}>
                 {list.map((detail) => (
                     <li
                         key={detail}
-                        className={`${style['list-item']} ${listClassName}`}
+                        className={`${style['list-item']} ${listStyle}`}
                     >
                         detail
                     </li>
                 ))}
             </ul>
             <section
-                className={`flex ${sectionDir} w-full ${sectionWidth} ${sectionClassName}`}
+                className={`flex ${sectionDir} w-full ${sectionWidth} ${section}`}
             >
                 {children}
             </section>

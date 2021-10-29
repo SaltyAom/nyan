@@ -1,8 +1,14 @@
-import style from '../../heading.module.sass'
+import style from '../../feature.module.sass'
 
-import type { BaseHeadingComponent } from './types'
+import type { FeatureDetailComponent } from './types'
 
-const Heading: BaseHeadingComponent = ({
+/**
+ * @example
+ * ```tsx
+ * <FeatureDetail title="AngelSeeker" content="And in that light. I find deliverance" />
+ * ```
+ */
+const Heading: FeatureDetailComponent = ({
     title,
     content,
     notify = '',
@@ -10,18 +16,19 @@ const Heading: BaseHeadingComponent = ({
         title: '',
         content: '',
         notify: '',
-        heading: 'gap-4'
+        section: '',
+        container: 'gap-2'
     }
 }) => {
     const {
+        container: containerClassName = 'gap-2',
         title: titleClassName = '',
         content: contentClassName = '',
         notify: notifyClassName = '',
-        heading: headingClassName = 'gap-4'
     } = className
 
     return (
-        <section className={`flex flex-col ${headingClassName}`}>
+        <header className={`flex flex-col ${containerClassName}`}>
             <section className="flex flex-col gap-2">
                 {notify && (
                     <h6 className={`${style.notify} ${notifyClassName}`}>
@@ -35,7 +42,7 @@ const Heading: BaseHeadingComponent = ({
                     {content}
                 </p>
             )}
-        </section>
+        </header>
     )
 }
 

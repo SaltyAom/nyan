@@ -30,21 +30,18 @@ const SideImageHeading: SideImageHeadingComponent = ({
     flip = false,
     sectionDir = '',
     className = {
-        container: '',
-        notify: '',
-        title: '',
-        content: '',
         section: 'gap-4 mx-auto sm:mx-0',
         heading: 'gap-4',
-        image: '',
         contentSide: 'gap-6'
     },
-    ...heading
+    ...headingProps
 }) => {
     const {
-        section: sectionClassName,
-        image: imageClassName,
-        contentSide: contentSideClassName
+        section = 'gap-4 mx-auto sm:mx-0',
+        image = '',
+        contentSide = 'gap-6',
+        heading = 'gap-4',
+        ...restClassName
     } = className
 
     return (
@@ -53,19 +50,20 @@ const SideImageHeading: SideImageHeadingComponent = ({
                 flip ? 'md:flex-row-reverse' : 'md:flex-row'
             } justify-center items-center w-full ${width} ${height} ${padding} ${className}`}
         >
-            <section
-                className={`flex flex-col ${flex[0]} ${contentSideClassName}`}
-            >
-                <Heading className={className} {...heading} />
+            <section className={`flex flex-col ${flex[0]} ${contentSide}`}>
+                <Heading
+                    className={{ ...restClassName, heading }}
+                    {...headingProps}
+                />
                 <section
-                    className={`flex flex-col sm:flex-row ${sectionWidth} w-full ${sectionClassName}`}
+                    className={`flex flex-col sm:flex-row ${sectionWidth} w-full ${section}`}
                 >
                     {children}
                 </section>
             </section>
             <div className={`flex ${sectionDir} ${flex[1]} items-center`}>
                 <img
-                    className={`object-contain object-center w-full ${imageWidth} ${imageClassName}`}
+                    className={`object-contain object-center w-full ${imageWidth} ${image}`}
                     src={src}
                     alt={alt}
                 />
