@@ -7,6 +7,7 @@ import {
     ListHeading,
 } from '@nyan/heading'
 import { FeatureCard, FeatureDetail, FeatureIcon } from '@nyan/feature'
+import { FocusPricing, TabPricing, TablePricing } from '@nyan/pricing'
 
 const Landing = () => {
     return (
@@ -100,6 +101,8 @@ const Landing = () => {
                     </FeatureCard>
                 ))}
             </section>
+
+            <TablePricing />
 
             <CenterHeading
                 title="Nyan Component"
