@@ -65,14 +65,14 @@ const TablePricing = () => {
             >
                 <h3 className="text-gray-500 pl-4 border-b">Plan</h3>
                 {pricings.map(({ type }) => (
-                    <h3 className="text-xl font-medium pb-2 border-b">
+                    <h3 key={type} className="text-xl font-medium pb-2 border-b">
                         {type}
                     </h3>
                 ))}
 
                 <h3 className="text-gray-500 pl-4 border-b">Pricing</h3>
-                {pricings.map(({ detail, pricing }) => (
-                    <section className="flex flex-col gap-4 pb-6 pr-6 border-b">
+                {pricings.map(({ type, detail, pricing }) => (
+                    <section key={type} className="flex flex-col gap-4 pb-6 pr-6 border-b">
                         <h3 className="text-4xl font-bold text-black">
                             ${pricing[0]}
                             <span className="text-base text-gray-400">
@@ -102,7 +102,7 @@ const TablePricing = () => {
 
                 <div />
                 {pricings.map(({ type }) => (
-                    <div className="flex w-full pr-4">
+                    <div key={type} className="flex w-full pr-4">
                         <Link href="/">
                             <a className="w-full text-white text-center font-medium py-3 bg-black rounded">
                                 Buy {type}
