@@ -4,10 +4,11 @@ import {
     SideImageHeading,
     CenterHeading,
     ImageHeading,
-    ListHeading,
+    ListHeading
 } from '@nyan/heading'
 import { FeatureCard, FeatureDetail, FeatureIcon } from '@nyan/feature'
 import { FocusPricing, TabPricing, TablePricing } from '@nyan/pricing'
+import { ChevronBreadcrumb, ElevatedBreadcrumb } from '@nyan/breadcrumb'
 
 const Landing = () => {
     return (
@@ -74,14 +75,41 @@ const Landing = () => {
 
             <section className="grid gap-8 gap-x-12 grid-cols-1 md:grid-cols-2 w-full max-w-[840px] mx-auto my-12 px-6">
                 {[
-                    ['🌕', 'Fly me to the moon', 'Let me play among the Let me see what spring is like on A-Jupiter and Mars'],
-                    ['🌎', 'Utopiosphere', 'Step through the gate into Utopia Sink into a world of Melodia'],
-                    ['🧵', 'String Theocracy', 'Open the curtains Lights on Don\'t miss a moment Of this experiment'],
-                    ['9.8', 'Nine Point Eight', 'Calla lily, carnation, daisy. Silently chase away your worries'],
-                    ['🎻', 'Ether Strike (Divine Mercy)', 'An intense dissatisfaction in the world. And a compulsion to do something about it.'],
-                    ['🔭', 'AngelSeeker', 'And in that light, I find deliverance']
+                    [
+                        '🌕',
+                        'Fly me to the moon',
+                        'Let me play among the Let me see what spring is like on A-Jupiter and Mars'
+                    ],
+                    [
+                        '🌎',
+                        'Utopiosphere',
+                        'Step through the gate into Utopia Sink into a world of Melodia'
+                    ],
+                    [
+                        '🧵',
+                        'String Theocracy',
+                        "Open the curtains Lights on Don't miss a moment Of this experiment"
+                    ],
+                    [
+                        '9.8',
+                        'Nine Point Eight',
+                        'Calla lily, carnation, daisy. Silently chase away your worries'
+                    ],
+                    [
+                        '🎻',
+                        'Ether Strike (Divine Mercy)',
+                        'An intense dissatisfaction in the world. And a compulsion to do something about it.'
+                    ],
+                    [
+                        '🔭',
+                        'AngelSeeker',
+                        'And in that light, I find deliverance'
+                    ]
                 ].map(([icon, title, content]) => (
-                    <FeatureCard icon={<FeatureIcon>{icon}</FeatureIcon>}>
+                    <FeatureCard
+                        key={title}
+                        icon={<FeatureIcon>{icon}</FeatureIcon>}
+                    >
                         <FeatureDetail title={title} content={content} />
                     </FeatureCard>
                 ))}
@@ -89,12 +117,36 @@ const Landing = () => {
 
             <section className="grid gap-8 gap-x-12 grid-cols-1 w-full max-w-[840px] mx-auto mb-12 px-6">
                 {[
-                    ['🌕', 'Fly me to the moon', 'Let me play among the Let me see what spring is like on A-Jupiter and Mars'],
-                    ['🌎', 'Utopiosphere', 'Step through the gate into Utopia Sink into a world of Melodia'],
-                    ['🧵', 'String Theocracy', 'Open the curtains Lights on Don\'t miss a moment Of this experiment'],
-                    ['9.8', 'Nine Point Eight', 'Calla lily, carnation, daisy. Silently chase away your worries'],
-                    ['🎻', 'Ether Strike (Divine Mercy)', 'An intense dissatisfaction in the world. And a compulsion to do something about it.'],
-                    ['🔭', 'AngelSeeker', 'And in that light, I find deliverance']
+                    [
+                        '🌕',
+                        'Fly me to the moon',
+                        'Let me play among the Let me see what spring is like on A-Jupiter and Mars'
+                    ],
+                    [
+                        '🌎',
+                        'Utopiosphere',
+                        'Step through the gate into Utopia Sink into a world of Melodia'
+                    ],
+                    [
+                        '🧵',
+                        'String Theocracy',
+                        "Open the curtains Lights on Don't miss a moment Of this experiment"
+                    ],
+                    [
+                        '9.8',
+                        'Nine Point Eight',
+                        'Calla lily, carnation, daisy. Silently chase away your worries'
+                    ],
+                    [
+                        '🎻',
+                        'Ether Strike (Divine Mercy)',
+                        'An intense dissatisfaction in the world. And a compulsion to do something about it.'
+                    ],
+                    [
+                        '🔭',
+                        'AngelSeeker',
+                        'And in that light, I find deliverance'
+                    ]
                 ].map(([icon, title, content]) => (
                     <FeatureCard icon={<FeatureIcon>{icon}</FeatureIcon>}>
                         <FeatureDetail title={title} content={content} />
@@ -103,6 +155,21 @@ const Landing = () => {
             </section>
 
             <TablePricing />
+
+            <ChevronBreadcrumb
+            className="mx-auto"
+                items={[
+                    [
+                        'Home',
+                        (event) => {
+                            event.preventDefault()
+                        }
+                    ],
+                    ['Ok', '/cool'],
+                    ['Hi', '/ok']
+                ]}
+                active={1}
+            />
 
             <CenterHeading
                 title="Nyan Component"
